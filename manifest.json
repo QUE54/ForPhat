@@ -1,0 +1,44 @@
+{
+  "name": "For Phat - Our Universe",
+  "short_name": "Our Universe",
+  "description": "A cinematic love experience built for Phat",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0118",
+  "theme_color": "#8B5CF6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='heart-grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238B5CF6;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23EC4899;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' fill='%230A0118'/%3E%3Cpath d='M256 448l-30.9-28.1C150.4 352.1 96 301.9 96 240c0-48.6 39.4-88 88-88 29.3 0 57.3 14.4 74 38.7 16.7-24.3 44.7-38.7 74-38.7 48.6 0 88 39.4 88 88 0 61.9-54.4 112.1-129.1 179.9L256 448z' fill='url(%23heart-grad)'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Cdefs%3E%3ClinearGradient id='heart-grad-sm' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238B5CF6;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23EC4899;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='192' height='192' fill='%230A0118'/%3E%3Cpath d='M96 168l-11.6-10.5C45.2 132.0 36 112.7 36 90c0-18.2 14.8-33 33-33 11.0 0 21.5 5.4 27.8 14.5C103.1 62.4 113.6 57 124.6 57c18.2 0 33 14.8 33 33 0 22.7-9.2 42.0-48.4 67.5L96 168z' fill='url(%23heart-grad-sm)'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["lifestyle", "entertainment"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Our Timeline",
+      "short_name": "Timeline",
+      "description": "View our love timeline",
+      "url": "/?chapter=timeline",
+      "icons": []
+    },
+    {
+      "name": "Memory Gallery",
+      "short_name": "Memories",
+      "description": "Browse our memories",
+      "url": "/?chapter=galaxy",
+      "icons": []
+    }
+  ],
+  "lang": "en-US",
+  "dir": "ltr"
+}

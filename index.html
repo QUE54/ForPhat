@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#8B5CF6">
+    <meta name="description" content="A universe built for you">
+    <title>For Phat ✨</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Canvas for Three.js -->
+    <canvas id="galaxy-canvas"></canvas>
+    
+    <!-- Floating Petals Container -->
+    <div id="petals-container"></div>
+    
+    <!-- Opening Cinematic -->
+    <section id="opening-scene" class="scene active">
+        <div class="cinematic-text">
+            <p class="fade-line" data-delay="0">In a universe of billions…</p>
+            <p class="fade-line" data-delay="2000">There is only one who feels like home.</p>
+        </div>
+    </section>
+    
+    <!-- Lock Screen -->
+    <section id="lock-screen" class="scene">
+        <div class="glass-card lock-card">
+            <div class="lock-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+            </div>
+            <h2>Private Access</h2>
+            <p class="lock-hint">The day our universe began</p>
+            <input 
+                type="text" 
+                id="password-input" 
+                placeholder="MM/DD/YYYY"
+                maxlength="10"
+                autocomplete="off"
+            >
+            <button id="unlock-btn" class="glow-btn">Enter</button>
+            <p id="lock-error" class="error-text"></p>
+        </div>
+    </section>
+    
+    <!-- Main Title Scene -->
+    <section id="title-scene" class="scene">
+        <div class="title-content">
+            <h1 class="main-title fade-in-up" data-delay="0">For Phat</h1>
+            <p class="subtitle fade-in-up" data-delay="600">Happy Valentine's Day</p>
+            <p class="from-text fade-in-up" data-delay="1200">From Q</p>
+            <button id="begin-journey-btn" class="glow-btn fade-in-up" data-delay="2000">
+                Begin Our Story
+            </button>
+        </div>
+    </section>
+    
+    <!-- Navigation -->
+    <nav id="chapter-nav" class="hidden">
+        <button class="nav-btn" data-chapter="timeline">
+            <span class="nav-icon">⏳</span>
+            <span class="nav-label">Timeline</span>
+        </button>
+        <button class="nav-btn" data-chapter="galaxy">
+            <span class="nav-icon">🌠</span>
+            <span class="nav-label">Memories</span>
+        </button>
+        <button class="nav-btn" data-chapter="letter">
+            <span class="nav-icon">💌</span>
+            <span class="nav-label">Letter</span>
+        </button>
+        <button class="nav-btn" data-chapter="game">
+            <span class="nav-icon">🎮</span>
+            <span class="nav-label">Game</span>
+        </button>
+    </nav>
+    
+    <!-- Chapter 1: Timeline -->
+    <section id="timeline-chapter" class="chapter hidden">
+        <div class="chapter-header">
+            <h2 class="chapter-title">Our Timeline</h2>
+            <p class="chapter-subtitle">Every moment, treasured forever</p>
+        </div>
+        
+        <div id="timeline-container" class="timeline-wrapper">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item" data-index="0">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card glass-card">
+                    <div class="timeline-date">June 6, 2024</div>
+                    <h3>Day Zero</h3>
+                    <p>The day our universe quietly started.</p>
+                    <div class="timeline-detail">
+                        The first memory I never want to forget.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-index="1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card glass-card">
+                    <div class="timeline-date" id="days-together"></div>
+                    <h3>Today</h3>
+                    <p>And every day in between has been magic.</p>
+                    <div class="timeline-detail">
+                        Every sunrise. Every laugh. Every quiet moment. All of it, with you.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="next-chapter-btn glow-btn" data-next="galaxy">
+            Continue to Memory Galaxy
+        </button>
+    </section>
+    
+    <!-- Chapter 2: Memory Galaxy -->
+    <section id="galaxy-chapter" class="chapter hidden">
+        <div class="chapter-header">
+            <h2 class="chapter-title">Memory Galaxy</h2>
+            <p class="chapter-subtitle">Our moments, forever shining</p>
+        </div>
+        
+        <div id="memory-galaxy" class="memory-container">
+            <!-- Memory stars will be generated here -->
+        </div>
+        
+        <!-- Memory Modal -->
+        <div id="memory-modal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content glass-card">
+                <button class="modal-close">×</button>
+                <div class="memory-image-wrapper">
+                    <img id="modal-image" src="" alt="Memory">
+                </div>
+                <p id="modal-caption" class="memory-caption"></p>
+            </div>
+        </div>
+        
+        <button class="next-chapter-btn glow-btn" data-next="letter">
+            Continue to Letter
+        </button>
+    </section>
+    
+    <!-- Chapter 3: Letter -->
+    <section id="letter-chapter" class="chapter hidden">
+        <div class="letter-container">
+            <div class="letter-content glass-card">
+                <div class="letter-header">
+                    <h2>Dear Phat,</h2>
+                </div>
+                <div id="letter-text" class="letter-body">
+                    <p>Happy Valentine's Day, Phat. Thank you for being my home.</p>
+                </div>
+                <div class="letter-signature">
+                    <p>Forever yours,</p>
+                    <p class="signature-name">Q</p>
+                </div>
+                
+                <div class="letter-closing">
+                    <p class="closing-text">Thank you for choosing to exist in my universe.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="next-chapter-btn glow-btn" data-next="game">
+            Continue to Game
+        </button>
+    </section>
+    
+    <!-- Chapter 4: Mini Game -->
+    <section id="game-chapter" class="chapter hidden">
+        <div class="chapter-header">
+            <h2 class="chapter-title">Catch My Hearts</h2>
+            <p class="chapter-subtitle">Every one is meant for you</p>
+        </div>
+        
+        <div id="game-container" class="game-wrapper">
+            <div class="game-stats glass-card">
+                <div class="stat-item">
+                    <span class="stat-label">Score</span>
+                    <span id="game-score" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Target</span>
+                    <span class="stat-value">50</span>
+                </div>
+            </div>
+            
+            <div id="game-area" class="game-area">
+                <!-- Hearts will spawn here -->
+            </div>
+            
+            <button id="start-game-btn" class="glow-btn">Start</button>
+        </div>
+        
+        <!-- Game Complete Modal -->
+        <div id="game-complete-modal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content glass-card">
+                <div class="fireworks-container" id="fireworks"></div>
+                <h2 class="game-complete-title">You are my forever Valentine</h2>
+                <button class="glow-btn" id="continue-to-finale">Continue</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final Scene -->
+    <section id="finale-scene" class="scene hidden">
+        <div id="heart-formation" class="heart-container">
+            <!-- 3D heart will form here -->
+        </div>
+        
+        <div class="finale-content">
+            <p class="finale-text fade-in-up" data-delay="0">Since June 6, 2024</p>
+            <p class="finale-text fade-in-up" data-delay="800">And every day after</p>
+            <p class="finale-text finale-emphasis fade-in-up" data-delay="1600">I will always choose you</p>
+            
+            <button id="final-btn" class="glow-btn fade-in-up" data-delay="2400">
+                Stay in my universe?
+            </button>
+        </div>
+        
+        <!-- Final Fireworks -->
+        <div id="final-fireworks" class="hidden"></div>
+    </section>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Creating your universe...</p>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="threeScene.js"></script>
+    <script src="timeline.js"></script>
+    <script src="gallery.js"></script>
+    <script src="letter.js"></script>
+    <script src="game.js"></script>
+    <script src="main.js"></script>
+    
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>
